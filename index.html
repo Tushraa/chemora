@@ -5,26 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chemora | Lab management software for academic chemistry labs</title>
 <meta name="description" content="Chemora builds websites for academic chemistry laboratories with chemical inventory, invoice management and custom tools in one package.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cuprum:wght@400;700&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230F2A43'/%3E%3Cpath d='M70 32 L50 20 L30 32 L30 56 L50 68 L70 56' fill='none' stroke='%232DD4BF' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='70' cy='32' r='7' fill='%23F59E0B'/%3E%3Ccircle cx='70' cy='56' r='7' fill='%23F59E0B'/%3E%3C/svg%3E">
 <style>
-:root{--navy:#1B1C1F;--navy2:#1E2840;--teal:#2DD4BF;--amber:#F59E0B;--mist:#A9B4C6;--white:#fff}
+:root{--navy:#0f1b2d;--navy2:#14263d;--bar:#1d3a5c;--btn:#24507a;--btn2:#2e639a;--green:#14a38b;--green2:#1bbba0;--input:#0c1626;--line:#091220;--teal:#2DD4BF;--amber:#F59E0B;--mist:#8fa6bd;--white:#fff}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:Helvetica,Arial,sans-serif;background:var(--navy);color:var(--white);line-height:1.6}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--navy) radial-gradient(rgba(255,255,255,.035) 1px,transparent 1px) 0 0/4px 4px;color:#e3ecf5;line-height:1.6}
+h1,h2,h3,h4{font-family:Cuprum,'Helvetica Neue',Arial,sans-serif}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1360px;margin:0 auto;padding:0 24px}
-header{position:sticky;top:0;z-index:10;background:rgba(27,28,31,.95);border-bottom:1px solid #2C3C5E}
+header{position:sticky;top:0;z-index:10;background:rgba(15,27,45,.96);border-bottom:1px solid var(--bar);box-shadow:0 1px 3px rgba(0,0,0,.45)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
 .brand{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:700;letter-spacing:1px}
 .brand svg{width:38px;height:38px}
 nav ul{display:flex;gap:28px;list-style:none;align-items:center}
 nav a{color:var(--mist);font-size:15px}
 nav a:hover{color:var(--white)}
-.btn{display:inline-block;background:var(--amber);color:var(--navy)!important;font-weight:700;padding:13px 28px;border-radius:2px;border:0;font-size:16px;cursor:pointer;font-family:inherit}
-.btn:hover{background:#fbb02e}
+.btn{display:inline-block;background:var(--green);color:#fff!important;font-weight:600;padding:13px 28px;border-radius:2px;border:0;font-size:16px;cursor:pointer;font-family:inherit;box-shadow:0 1px 3px rgba(0,0,0,.45)}
+.btn:hover{background:var(--green2)}
 .btn.sm{padding:9px 20px;font-size:14px}
-.btn.ghost{background:transparent;color:var(--teal)!important;border:2px solid var(--teal)}
-.btn.ghost:hover{background:rgba(45,212,191,.1)}
+.btn.ghost{background:transparent;color:#fff!important;border:1px solid #3b6ea8;box-shadow:none}
+.btn.ghost:hover{background:var(--btn)}
 .hero{padding:88px 0 72px;position:relative;overflow:hidden}
 .hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
 .hex{position:absolute;right:-60px;top:-30px;width:420px;opacity:.12;pointer-events:none}
@@ -34,68 +36,73 @@ h1 span{color:var(--teal)}
 .cta{display:flex;gap:14px;flex-wrap:wrap}
 .flask{width:100%;max-width:340px;justify-self:center;position:relative}
 section{padding:72px 0}
-.alt{background:#202226}
+.alt{background:rgba(9,18,32,.45)}
 .eyebrow{color:var(--teal);font-size:13px;letter-spacing:3px;text-transform:uppercase;font-weight:700;margin-bottom:10px}
 h2{font-size:clamp(24px,3.6vw,34px);line-height:1.2;margin-bottom:14px;text-transform:uppercase;letter-spacing:1.5px}
 .sub{color:var(--mist);font-size:18px;max-width:640px;margin-bottom:44px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
-.card{position:relative;display:grid;grid-template-columns:60px 1fr;gap:6px 18px;align-items:start;background:var(--navy2);border:1px solid #2C3C5E;border-radius:2px;padding:22px}
-.card::after{content:"\2192";position:absolute;top:16px;right:16px;width:32px;height:32px;border:1px solid #2C3C5E;display:flex;align-items:center;justify-content:center;color:var(--mist)}
+.card{position:relative;display:grid;grid-template-columns:60px 1fr;gap:6px 18px;align-items:start;background:var(--navy2);border:1px solid var(--line);border-radius:3px;padding:22px;box-shadow:0 1px 3px rgba(0,0,0,.45)}
+.card::after{content:"\2192";position:absolute;top:16px;right:16px;width:32px;height:32px;border:1px solid var(--bar);display:flex;align-items:center;justify-content:center;color:var(--mist)}
 .alt .card{background:var(--navy2)}
-.card .ic{grid-row:1/3;width:60px;height:60px;border-radius:2px;display:flex;align-items:center;justify-content:center}
+.card .ic{grid-row:1/3;width:60px;height:60px;border-radius:2px;display:flex;align-items:center;justify-content:center;background:var(--bar);color:var(--teal)}
 .card .ic svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-#features .card:nth-child(1) .ic{background:#1F2E55;color:#6D93F2}
-#features .card:nth-child(2) .ic{background:#1D3A35;color:#34D399}
-#features .card:nth-child(3) .ic{background:#3A2F1D;color:#F5B83D}
-#features .card:nth-child(4) .ic{background:#33284F;color:#A78BFA}
 .card h3{font-size:16px;letter-spacing:1.5px;text-transform:uppercase;padding-right:44px;align-self:center}
 .card p{color:var(--mist);font-size:15px;grid-column:2}
 .steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px;list-style:none}
 .steps li{counter-increment:s;padding-top:18px;border-top:3px solid var(--teal)}
-.steps li:nth-child(2){border-color:var(--amber)}
-.steps li::before{content:"0" counter(s);color:var(--amber);font-weight:700;font-size:14px;letter-spacing:2px;display:block;margin-bottom:6px}
+.steps li:nth-child(2){border-color:#2c7fb8}
+.steps li::before{content:"0" counter(s);color:var(--teal);font-weight:700;font-size:14px;letter-spacing:2px;display:block;margin-bottom:6px}
 .steps h3{font-size:17px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
 .steps p{color:var(--mist)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
 .ticks{list-style:none}
-.ticks li{padding:12px 0 12px 36px;position:relative;border-bottom:1px solid #2C3C5E;font-size:18px}
+.ticks li{padding:12px 0 12px 36px;position:relative;border-bottom:1px solid var(--bar);font-size:18px}
 .ticks li::before{content:"";position:absolute;left:0;top:19px;width:14px;height:14px;border-radius:50%;background:var(--teal)}
 form{display:grid;gap:14px}
 label{font-size:14px;color:var(--mist)}
-input,textarea{width:100%;margin-top:6px;padding:13px 14px;border-radius:2px;border:1px solid rgba(127,163,191,.35);background:var(--navy);color:var(--white);font:inherit}
+input,textarea{width:100%;margin-top:6px;padding:13px 14px;border-radius:2px;border:1px solid var(--line);background:var(--input);color:var(--white);font:inherit}
 input:focus,textarea:focus{outline:2px solid var(--teal);border-color:var(--teal)}
 textarea{min-height:110px;resize:vertical}
-footer{padding:36px 0;border-top:1px solid #2C3C5E;color:var(--mist);font-size:14px}
+footer{padding:36px 0;border-top:1px solid var(--bar);color:var(--mist);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center}
-.clients{padding:48px 0;border-top:1px solid #2C3C5E;border-bottom:1px solid #2C3C5E}
+.clients{padding:48px 0;border-top:1px solid var(--bar);border-bottom:1px solid var(--bar)}
 .clients .eyebrow{text-align:center;margin-bottom:26px;color:var(--mist)}
+.marquee.static{-webkit-mask-image:none;mask-image:none}.marquee.static .track{width:auto;justify-content:center;flex-wrap:wrap;animation:none}.marquee.static .logo{margin:0 24px 12px}
 .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .track{display:flex;width:max-content;animation:scroll var(--speed,30s) linear infinite}
 .marquee:hover .track{animation-play-state:paused}
-.logo{flex:none;height:64px;margin-right:48px;padding:10px 26px;border-radius:2px;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--navy);font-weight:700;font-size:16px;white-space:nowrap}
+.logo{flex:none;height:84px;margin-right:48px;padding:6px 26px;border-radius:3px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;color:var(--navy);font-weight:700;font-size:16px;white-space:nowrap}
 .logo img{height:100%;width:auto;display:block}
 @keyframes scroll{to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.track{animation:none}.marquee{overflow-x:auto}}
-.mock{border:1px solid #2C3C5E;background:var(--navy);border-radius:2px;overflow:hidden}
-.mbar{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid #2C3C5E}
+/* product preview: the real Chemora inventory interface */
+.mock{border:1px solid var(--line);background:var(--navy) radial-gradient(rgba(255,255,255,.035) 1px,transparent 1px) 0 0/4px 4px;border-radius:3px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.45)}
+.mbar{display:flex;justify-content:space-between;align-items:center;padding:16px 22px}
 .mbar .l{display:flex;align-items:center;gap:10px}
-.mbar b{display:block;font-size:20px;line-height:1.1}
-.mbar small{font-size:9px;letter-spacing:2px;color:var(--teal);font-weight:700}
-.user{display:flex;align-items:center;gap:10px;font-size:13px;line-height:1.3}
-.av{width:36px;height:36px;border-radius:50%;background:#2F5BE0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
-.mbody{display:grid;grid-template-columns:230px 1fr;gap:22px;padding:22px}
-.side{border:1px solid #2C3C5E;background:#202226;padding:14px;align-self:start;font-size:13px}
-.side .org{display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px;padding:4px 4px 12px;border-bottom:1px solid #2C3C5E;margin-bottom:10px}
-.side .g{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mist);font-weight:700;margin:14px 4px 6px}
-.side a{display:block;padding:7px 8px;color:#D5DCE8;border:1px solid transparent}
-.side a.on{background:#27406B;border-color:#3B5B94;color:#fff}
-.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.tile{position:relative;background:var(--navy2);border:1px solid #2C3C5E;padding:16px;display:grid;grid-template-columns:46px 1fr;gap:4px 14px;align-content:start;min-height:122px}
-.tic{grid-row:1/3;width:46px;height:46px;display:flex;align-items:center;justify-content:center;border-radius:2px}
-.tic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.tile h4{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding-right:30px;align-self:center}
-.tile p{font-size:12px;color:var(--mist);line-height:1.5}
-.tile::after{content:"\2192";position:absolute;top:12px;right:12px;width:26px;height:26px;border:1px solid #2C3C5E;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--mist)}
+.mbar b{display:block;font-size:22px;line-height:1.1;letter-spacing:1px}
+.mbar small{font-size:9px;letter-spacing:3px;color:var(--teal);font-weight:700}
+.av{width:40px;height:40px;background:var(--btn);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;box-shadow:0 1px 3px rgba(0,0,0,.45)}
+.mbody{display:grid;grid-template-columns:190px 250px 1fr;gap:18px;padding:6px 22px 24px;align-items:start}
+.menu{display:flex;flex-direction:column;gap:5px}
+.menu span{display:block;height:36px;line-height:36px;padding:0 12px;background:var(--bar);color:#fff;font-family:Cuprum,Arial,sans-serif;font-weight:700;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.45);border-radius:3px}
+.menu span.on{background:var(--green)}
+.pan{background:var(--navy2);box-shadow:0 1px 3px rgba(0,0,0,.45);border-radius:3px;overflow:hidden;font-size:12px}
+.pan h5{display:flex;justify-content:space-between;align-items:center;margin:0;padding:10px 14px;background:var(--bar);font-family:Cuprum,Arial,sans-serif;font-size:15px;color:#fff}
+.pan .in{padding:12px 14px}
+.pan label{display:block;font-size:12px;color:#e3ecf5;margin-top:8px}
+.pan .fld{height:30px;margin-top:4px;background:var(--input);border:1px solid var(--line);color:#5d7690;font-size:11px;line-height:28px;padding:0 8px}
+.pb{display:inline-block;padding:0 12px;height:32px;line-height:32px;background:var(--btn);color:#fff;font-size:12px;box-shadow:0 1px 3px rgba(0,0,0,.45);border-radius:2px}
+.pb.g{background:var(--green)}.pb.o{background:transparent;border:1px solid #3b6ea8;line-height:30px}
+.bdg{background:var(--green);font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;font-weight:700;padding:2px 8px}
+.tb{display:flex;gap:6px;margin:4px 0 12px;flex-wrap:wrap}
+.mt{width:100%;border-collapse:collapse}
+.mt th{text-align:left;font-style:italic;font-weight:700;padding:8px 6px;border-bottom:1px solid var(--line)}
+.mt td{padding:8px 6px;border-bottom:1px solid var(--line)}
+.mt th:last-child,.mt td:last-child{text-align:right;white-space:nowrap}
+.sq{display:inline-block;width:20px;height:20px;background:var(--btn);margin-left:4px;vertical-align:middle;border-radius:2px}.sq.r{background:#d9635d}
+@media(max-width:1000px){.mbody{grid-template-columns:1fr}.menu{display:none}}
+.mail a{font-size:22px;font-weight:700;color:#fff;border-bottom:2px solid var(--green)}
+.mail a:hover{color:var(--teal)}
 .note{color:var(--mist);font-size:14px;margin-top:14px}
 @media(max-width:900px){.mbody{grid-template-columns:1fr}.side{display:none}.tiles{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.tiles{grid-template-columns:1fr}.mbar{padding:12px}}
@@ -150,13 +157,7 @@ section{padding:56px 0}
 <!-- SPEED: change --speed below. Lower number = faster (seconds per full loop). Example: 15s fast, 30s medium, 60s slow. -->
 <div class="marquee" style="--speed:30s">
 <div class="track" id="track">
-<!-- Replace each placeholder with your client logo, e.g. <div class="logo"><img src="logos/client1.png" alt="Client name"></div> -->
-<div class="logo">Client logo 1</div>
-<div class="logo">Client logo 2</div>
-<div class="logo">Client logo 3</div>
-<div class="logo">Client logo 4</div>
-<div class="logo">Client logo 5</div>
-<div class="logo">Client logo 6</div>
+<div class="logo"><img src="logo/harigroup.png" alt="Hari Group"></div>
 </div>
 </div>
 </section>
@@ -179,10 +180,15 @@ section{padding:56px 0}
 <div class="wrap">
 <p class="eyebrow">Product preview</p>
 <h2>See Chemora in action</h2>
-<p class="sub">An example of the Chemora chemical management dashboard: search your inventory, register containers, handle purchase requests and keep safety documents in one workspace.</p>
-<div class="mock" role="img" aria-label="Example Chemora chemical management dashboard">
-<div class="mbar"><div class="l"><svg style="width:38px;height:38px"><use href="#mark"/></svg><div><b>Chemora</b><small>CHEMICAL MANAGEMENT</small></div></div><div class="user"><span class="av">LA</span><span><strong>Lab Admin</strong><br><span style="color:var(--mist)">Administrator</span></span></div></div>
-<div class="mbody"><aside class="side" id="side"></aside><div><p class="eyebrow" style="color:#fff;margin-bottom:14px">Workspace</p><div class="tiles" id="tiles"></div></div></div>
+<p class="sub">An example of the Chemora chemical inventory: search containers by name, CAS number, barcode or structure, register new bottles, handle purchase requests and manage storage locations in one workspace.</p>
+<div class="mock" role="img" aria-label="Example Chemora chemical inventory interface">
+<div class="mbar"><div class="l"><svg style="width:38px;height:38px"><use href="#mark"/></svg><div><b>Chemora</b><small>INVENTORY</small></div></div><span class="av">LA</span></div>
+<div class="mbody">
+<div class="menu"><span class="on">Search</span><span>Add a Container</span><span>Order Requests</span><span>Locations</span><span>Administration</span></div>
+<div class="pan"><h5>Search for a Container</h5><div class="in"><label>Name:<div class="fld">Container Name</div></label><label>CAS Number:<div class="fld">CAS Registry Number</div></label><label>Barcode:<div class="fld">Container/Location Barcode</div></label><div style="display:flex;gap:8px;margin-top:14px"><span class="pb">Structure Search</span><span class="pb">Search</span></div></div></div>
+<div class="pan"><h5>Your Laboratory<span class="bdg">3 Results Found</span></h5><div class="in"><div class="tb"><span class="pb">Table View</span><span class="pb o">Grid View</span><span class="pb g">Download Results</span></div>
+<table class="mt"><thead><tr><th>Container Name</th><th>Actions</th></tr></thead><tbody><tr><td>Acetone</td><td><i class="sq"></i><i class="sq"></i><i class="sq"></i><i class="sq r"></i></td></tr><tr><td>Benzaldehyde</td><td><i class="sq"></i><i class="sq"></i><i class="sq"></i><i class="sq r"></i></td></tr><tr><td>Ethanol</td><td><i class="sq"></i><i class="sq"></i><i class="sq"></i><i class="sq r"></i></td></tr></tbody></table></div></div>
+</div>
 </div>
 <p class="note">Example screen with sample content. Your lab's dashboard is built around your own modules.</p>
 </div>
@@ -222,7 +228,8 @@ section{padding:56px 0}
 <div>
 <p class="eyebrow">Get started</p>
 <h2>Book a free demo</h2>
-<p class="sub" style="margin-bottom:0">Tell us a little about your lab and we will get back to you to show you how Chemora can work for your team.</p>
+<p class="sub" style="margin-bottom:18px">Tell us a little about your lab and we will get back to you to show you how Chemora can work for your team.</p>
+<p class="mail"><span class="eyebrow" style="display:block;margin-bottom:4px">Contact</span><a href="mailto:booking@chemora.art">booking@chemora.art</a></p>
 </div>
 <form id="f">
 <label>Your name<input name="name" required></label>
@@ -238,23 +245,13 @@ section{padding:56px 0}
 <footer>
 <div class="wrap">
 <a class="brand" href="#top" style="font-size:18px"><svg style="width:30px;height:30px"><use href="#mark"/></svg>Chemora</a>
-<span>www.chemora.art</span>
+<span>www.chemora.art &middot; <a href="mailto:booking@chemora.art" style="border-bottom:1px solid var(--bar)">booking@chemora.art</a></span>
 <span>&copy; 2026 Chemora. All rights reserved.</span>
 </div>
 </footer>
 
 <script>
-(function(){
-var P={search:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>',flask:'<path d="M10 2v6L4.5 18a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L14 8V2M8.5 2h7M7 15h10"/>',clip:'<rect x="6" y="4" width="12" height="17" rx="1"/><path d="M9 4h6v3H9zM9 12h6M9 16h6"/>',list:'<path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/>',bld:'<path d="M3 21V9l9-6 9 6v12zM8 21v-6h8v6M8 12h8"/>',shield:'<path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/>',users:'<circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-4 3-6 7-6s7 2 7 6M17 5a3.5 3.5 0 0 1 0 7M22 20c0-3-2-5-4-5.5"/>',hist:'<path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5M12 7v5l3 2"/>',chart:'<path d="M4 20V4M4 20h16M9 16v-5M13 16V8M17 16v-3"/>'};
-var T=[["Search chemicals","Find chemicals, containers, barcodes and stock levels.","search","#1F2E55","#6D93F2"],["Add container","Register new chemical bottles and storage details.","flask","#1D3A35","#34D399"],["Request chemicals","Submit a new purchasing request.","clip","#3A2F1D","#F5B83D"],["Current orders","Review requests and manage purchasing progress.","list","#33284F","#A78BFA"],["Locations","Explore and manage laboratory storage.","bld","#173A44","#2DD4BF"],["SDS & safety","View the chemical safety and file storage module.","shield","#3D2530","#F06292"],["User management","Manage approved laboratory accounts.","users","#26294F","#818CF8"],["Log history","Review recorded inventory activity.","hist","#3B2A22","#F58A4A"],["Inventory tools","Exports, labels and inventory utilities.","chart","#1D3A35","#2DD4BF"]];
-var h='';T.forEach(function(t){h+='<div class="tile"><div class="tic" style="background:'+t[3]+';color:'+t[4]+'"><svg viewBox="0 0 24 24">'+P[t[2]]+'</svg></div><h4>'+t[0].replace('&','&amp;')+'</h4><p>'+t[1]+'</p></div>';});
-document.getElementById('tiles').innerHTML=h;
-var S=[["Inventory",["Search Chemicals","Add Chemicals"]],["Requests",["Manage Requests","Request Chemicals","Locations"]],["Administration",["Log History","User Management"]],["Management",["Inventory Tools","SDS &amp; File Storage"]]];
-var g='<div class="org"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#6D93F2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+P.flask+'</svg>Your Lab</div><a class="on">Home</a>';
-S.forEach(function(x){g+='<div class="g">'+x[0]+'</div>';x[1].forEach(function(n){g+='<a>'+n+'</a>';});});
-document.getElementById('side').innerHTML=g;
-})();
-(function(){var t=document.getElementById('track');if(!t)return;var items=Array.prototype.slice.call(t.children);items.forEach(function(el){var c=el.cloneNode(true);c.setAttribute('aria-hidden','true');t.appendChild(c);});})();
+(function(){var t=document.getElementById('track');if(!t)return;var items=Array.prototype.slice.call(t.children);if(items.length<5){t.parentNode.classList.add('static');return;}items.forEach(function(el){var c=el.cloneNode(true);c.setAttribute('aria-hidden','true');t.appendChild(c);});})();
 document.getElementById('f').addEventListener('submit',function(e){
 e.preventDefault();
 var d=new FormData(this);
