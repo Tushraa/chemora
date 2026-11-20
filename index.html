@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chemora | Lab management software for academic chemistry labs</title>
 <meta name="description" content="Chemora builds websites for academic chemistry laboratories with chemical inventory, invoice management and custom tools in one package.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cuprum:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cuprum:wght@400;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230F2A43'/%3E%3Cpath d='M70 32 L50 20 L30 32 L30 56 L50 68 L70 56' fill='none' stroke='%232DD4BF' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='70' cy='32' r='7' fill='%23F59E0B'/%3E%3Ccircle cx='70' cy='56' r='7' fill='%23F59E0B'/%3E%3C/svg%3E">
 <style>
 :root{--navy:#0f1b2d;--navy2:#14263d;--bar:#1d3a5c;--btn:#24507a;--btn2:#2e639a;--green:#14a38b;--green2:#1bbba0;--input:#0c1626;--line:#091220;--teal:#2DD4BF;--amber:#F59E0B;--mist:#8fa6bd;--white:#fff}
@@ -27,7 +27,8 @@ nav a:hover{color:var(--white)}
 .btn.sm{padding:9px 20px;font-size:14px}
 .btn.ghost{background:transparent;color:#fff!important;border:1px solid #3b6ea8;box-shadow:none}
 .btn.ghost:hover{background:var(--btn)}
-.hero{padding:88px 0 72px;position:relative;overflow:hidden}
+.hero{padding:150px 0 130px;min-height:660px;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero .wrap{width:100%}
 .hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
 .hex{position:absolute;right:-60px;top:-30px;width:420px;opacity:.12;pointer-events:none}
 h1{font-size:clamp(38px,6vw,64px);line-height:1.1;font-weight:700}
@@ -65,14 +66,14 @@ input:focus,textarea:focus{outline:2px solid var(--teal);border-color:var(--teal
 textarea{min-height:110px;resize:vertical}
 footer{padding:36px 0;border-top:1px solid var(--bar);color:var(--mist);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center}
-.clients{padding:48px 0;border-top:1px solid var(--bar);border-bottom:1px solid var(--bar)}
-.clients .eyebrow{text-align:center;margin-bottom:26px;color:var(--mist)}
-.marquee.static{-webkit-mask-image:none;mask-image:none}.marquee.static .track{width:auto;justify-content:center;flex-wrap:wrap;animation:none}.marquee.static .logo{margin:0 24px 12px}
+.clients{padding:22px 0 24px;border-top:1px solid var(--bar);border-bottom:1px solid var(--bar)}
+.clients .eyebrow{text-align:center;margin-bottom:14px;color:var(--mist);font-size:11px}
 .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.track{display:flex;width:max-content;animation:scroll var(--speed,30s) linear infinite}
+.track{display:flex;width:max-content;align-items:center;animation:scroll var(--dur,40s) linear infinite}
 .marquee:hover .track{animation-play-state:paused}
-.logo{flex:none;height:84px;margin-right:48px;padding:6px 26px;border-radius:3px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;color:var(--navy);font-weight:700;font-size:16px;white-space:nowrap}
-.logo img{height:100%;width:auto;display:block}
+.logo{flex:none;display:block;margin-right:72px;height:34px;opacity:.75;transition:opacity .2s}
+.logo:hover{opacity:1}
+.logo img{height:100%;width:auto;display:block;filter:grayscale(1)}
 @keyframes scroll{to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.track{animation:none}.marquee{overflow-x:auto}}
 /* product preview: the real Chemora inventory interface */
@@ -108,11 +109,61 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
 @media(max-width:560px){.tiles{grid-template-columns:1fr}.mbar{padding:12px}}
 @media(max-width:800px){
 nav ul li:not(:last-child){display:none}
-.hero{padding:56px 0 48px}
+.hero{padding:96px 0 84px;min-height:0}
 .hero .wrap,.two{grid-template-columns:1fr}
 .flask{max-width:240px}
 section{padding:56px 0}
 }
+
+/* tool profiles with live-coded previews */
+.tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.ut{display:flex;flex-direction:column;background:var(--navy2);border:1px solid var(--line);border-radius:3px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.45);transition:transform .2s,box-shadow .2s}
+.ut:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.45)}
+.ut-tag{display:inline-block;margin:14px 0 0 18px;background:var(--bar);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;padding:3px 9px}
+.ut-body{display:flex;flex-direction:column;flex:1;padding:16px 18px 20px}
+.ut-body h3{font-size:19px;letter-spacing:1px;text-transform:uppercase;color:#fff}
+.ut-bar{width:50px;height:3px;background:var(--green);margin:8px 0 12px}
+.ut-body p{color:var(--mist);font-size:14px;line-height:1.6}
+.ut-link{margin-top:auto;padding-top:16px;color:var(--teal);font-weight:700;font-size:14px}
+.ut-link:hover{color:#fff}
+.viz{height:224px;margin:10px 18px 0;position:relative;overflow:hidden;text-align:left;color:#cbd5e1;font:500 11.5px/1.5 'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;background:radial-gradient(500px 220px at 85% -10%,rgba(36,80,122,.55),transparent 60%),radial-gradient(400px 200px at 0% 120%,rgba(20,163,139,.2),transparent 60%),#091220;border:1px solid var(--bar);padding:12px 14px}
+.viz::before{content:"";position:absolute;inset:0;pointer-events:none;background-size:24px 24px;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px)}
+.viz>*{position:relative}
+.viz-bar{display:flex;align-items:center;gap:5px;margin-bottom:10px}
+.viz-bar i{width:8px;height:8px;background:#d9635d}.viz-bar i:nth-child(2){background:var(--amber)}.viz-bar i:nth-child(3){background:var(--green)}
+.viz-file{margin-left:8px;color:#6b86a3;font-size:10.5px;letter-spacing:.04em}
+.pill{font-size:10px;font-weight:700;letter-spacing:.08em;padding:2px 8px;background:rgba(245,158,11,.15);color:var(--amber);border:1px solid rgba(245,158,11,.45);transition:all .4s}
+.pill.ok,.pill.paid{background:rgba(20,163,139,.18);color:var(--teal);border-color:rgba(20,163,139,.6)}
+.inv-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;color:#f1f5f9;font-weight:700}
+.inv-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed #1d3a5c;opacity:0;transform:translateX(-14px);transition:all .5s}
+.inv-row.show{opacity:1;transform:none}.inv-row em{font-style:normal;color:#93c5fd}
+.inv-total{display:flex;justify-content:space-between;align-items:center;margin-top:9px;color:#8fa6bd;letter-spacing:.12em}
+.inv-total strong{color:var(--teal);font-size:18px;letter-spacing:0}
+.chem-search{display:flex;align-items:center;gap:8px;border:1px solid #2d4a7c;background:rgba(12,22,38,.9);padding:8px 10px;color:#f1f5f9;min-height:36px}
+.chem-search svg{color:#6b86a3;flex:none}
+.caret{display:inline-block;width:7px;height:14px;background:var(--teal);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.chem-res{display:flex;align-items:center;gap:12px;margin-top:12px;padding:8px 10px;border:1px solid #1d3a5c;background:rgba(29,58,92,.45);opacity:0;transform:translateY(10px);transition:all .5s}
+.chem-res.show{opacity:1;transform:none}.chem-res>div{flex:1;min-width:0}
+.chem-name{color:#f1f5f9;font-weight:700;font-size:13px}.chem-cas{color:#6b86a3}
+.chem-meta{display:flex;justify-content:space-between;margin-top:12px;color:#6b86a3;font-size:10.5px}.chem-meta span:first-child{color:var(--teal)}
+.code{white-space:pre;min-height:150px;color:#e3ecf5;font-size:11.5px;line-height:1.65}
+.code .t{color:#7fb4ff}.code .a{color:var(--amber)}.code .s{color:var(--teal)}.code .c{color:#6b86a3}
+@media(prefers-reduced-motion:reduce){.caret{animation:none}}
+.custom{margin-top:72px}
+.custom-h{text-align:center;font-size:clamp(20px,2.6vw,28px);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:0}
+.orbit{position:relative;width:min(660px,100%);aspect-ratio:1;margin:0 auto}
+.orbit .ring{position:absolute;inset:0;width:100%;height:100%}
+.hub{position:absolute;left:50%;top:50%;width:30%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:var(--bar);box-shadow:0 0 0 8px rgba(29,58,92,.35),0 1px 3px rgba(0,0,0,.45);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px}
+.hub svg{width:34px;height:34px;fill:none;stroke:var(--teal);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-bottom:6px}
+.hub b{font-family:Cuprum,Arial,sans-serif;font-size:17px;text-transform:uppercase;letter-spacing:1px}
+.hub small{color:var(--mist);font-size:11px}
+.node{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:8px;width:162px;padding:9px 12px;background:var(--navy2);border:1px solid var(--bar);border-radius:40px;box-shadow:0 1px 3px rgba(0,0,0,.45);font-size:13px;line-height:1.25;transition:background .2s,border-color .2s}
+.node:hover{background:var(--btn);border-color:#3b6ea8}
+.node svg{flex:none;width:20px;height:20px;fill:none;stroke:var(--teal);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:900px){.tools{grid-template-columns:1fr}.orbit{aspect-ratio:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px}.orbit .ring,.hub{display:none}.node{position:static;transform:none;width:auto;border-radius:3px}}
+@media(max-width:900px){.custom-h{margin-bottom:22px}}
+@media(max-width:480px){.orbit{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -154,12 +205,7 @@ section{padding:56px 0}
 
 <section class="clients" id="clients" aria-label="Our clients">
 <div class="wrap"><p class="eyebrow">Trusted by labs and institutions</p></div>
-<!-- SPEED: change --speed below. Lower number = faster (seconds per full loop). Example: 15s fast, 30s medium, 60s slow. -->
-<div class="marquee" style="--speed:30s">
-<div class="track" id="track">
-<div class="logo"><img src="logo/harigroup.png" alt="Hari Group"></div>
-</div>
-</div>
+<div class="marquee" id="marquee" aria-label="Client logos"><div class="track" id="track"></div></div>
 </section>
 
 <section id="features" class="alt">
@@ -167,11 +213,36 @@ section{padding:56px 0}
 <p class="eyebrow">What you get</p>
 <h2>Everything your lab needs, in one website</h2>
 <p class="sub">Instead of juggling spreadsheets, paper files and separate tools, your lab gets one organized, web-based home.</p>
-<div class="grid">
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M10 2v6L4.5 18a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L14 8V2"/><path d="M8.5 2h7"/><path d="M7 15h10"/></svg></div><h3>Chemical inventory</h3><p>Keep track of every chemical in your lab, from what is in stock to where it is stored.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></div><h3>Invoice management</h3><p>Record, organize and find purchase invoices in one place, instead of searching through files.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.4 2.4-2.6-.6-.6-2.6z"/></svg></div><h3>Custom tools</h3><p>Need something specific to your lab? We build tools around your workflow and add them to the same site.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></div><h3>Your lab website</h3><p>A clean, professional website for your laboratory that brings all of the above together.</p></div>
+<div class="tools">
+<div class="ut">
+<div class="ut-top"><span class="ut-tag">INVENTORY</span>
+<div class="viz viz-chem" role="img" aria-label="Animated chemical search with a matching container"><div class="viz-bar"><i></i><i></i><i></i><span class="viz-file">search.query</span></div>
+<div class="chem-search"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span id="cs-text"></span><span class="caret"></span></div>
+<div class="chem-res" id="cs-res"><div><div class="chem-name" id="cs-name"></div><div class="chem-cas" id="cs-cas"></div></div><span class="pill ok" id="cs-loc"></span></div>
+<div class="chem-meta"><span>&#9679; in stock</span><span>barcode &#9612;&#9612;&#9614;&#9612;&#9614;&#9612;&#9612;&#9614;</span></div></div></div>
+<div class="ut-body"><h3>Chemical Inventory</h3><div class="ut-bar"></div><p>Keep track of every chemical in your lab, from what is in stock to where it is stored. Search by name, CAS number, barcode or structure.</p><a class="ut-link" href="#contact">Book a demo &rarr;</a></div>
+</div>
+<div class="ut">
+<div class="ut-top"><span class="ut-tag">INVOICE</span>
+<div class="viz viz-inv" role="img" aria-label="Animated invoice with items, total and paid status"><div class="viz-bar"><i></i><i></i><i></i><span class="viz-file">invoice_2048.json</span></div>
+<div class="inv-head"><span>INV-<b>2048</b></span><span class="pill" id="iv-pill">PENDING</span></div>
+<div class="inv-row"><span>Acetonitrile (HPLC) 4 L</span><em>&#8377; 12,400</em></div><div class="inv-row"><span>Silica gel 60&ndash;120 mesh</span><em>&#8377; 8,250</em></div><div class="inv-row"><span>Chloroform-d 100 g</span><em>&#8377; 27,600</em></div>
+<div class="inv-total"><span>TOTAL</span><strong id="iv-total">&#8377; 0</strong></div></div></div>
+<div class="ut-body"><h3>Invoice Management</h3><div class="ut-bar"></div><p>Record, organize and find purchase invoices in one place, track payment status and reconcile without searching through files.</p><a class="ut-link" href="#contact">Book a demo &rarr;</a></div>
+</div>
+<div class="ut">
+<div class="ut-top"><span class="ut-tag">WEBSITE</span>
+<div class="viz viz-web" role="img" aria-label="Animated code for a laboratory website being written"><div class="viz-bar"><i></i><i></i><i></i><span class="viz-file">index.html</span><span class="pill" id="wb-pill" style="margin-left:auto">BUILDING</span></div>
+<div class="code" id="wb-code"></div></div></div>
+<div class="ut-body"><h3>Your Lab Website</h3><div class="ut-bar"></div><p>A clean, professional website for your laboratory that brings research, members, publications and the tools above together.</p><a class="ut-link" href="#contact">Book a demo &rarr;</a></div>
+</div>
+</div>
+
+<div class="custom">
+<p class="eyebrow" style="text-align:center">Custom tools</p>
+<h3 class="custom-h">Anything else your lab needs, built around your workflow</h3>
+<div class="orbit" id="orbit" aria-label="Custom tool options"><svg class="ring" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="80" fill="none" stroke="#1d3a5c" stroke-width=".8" stroke-dasharray="2 3"/><circle cx="100" cy="100" r="52" fill="none" stroke="#14263d" stroke-width="1"/></svg>
+<div class="hub"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.4 2.4-2.6-.6-.6-2.6z"/></svg><b>Custom Tools</b><small>made for your lab</small></div></div>
 </div>
 </div>
 </section>
@@ -251,7 +322,49 @@ section{padding:56px 0}
 </footer>
 
 <script>
-(function(){var t=document.getElementById('track');if(!t)return;var items=Array.prototype.slice.call(t.children);if(items.length<5){t.parentNode.classList.add('static');return;}items.forEach(function(el){var c=el.cloneNode(true);c.setAttribute('aria-hidden','true');t.appendChild(c);});})();
+/* Clients: add an entry here (name, website, logo file in /logo) and it joins the moving strip. */
+(function(){
+var CLIENTS=[{name:'Hari Group',url:'https://harigroup.orgchem.iisc.ac.in',img:'logo/harigroup-clear.png'}];
+var m=document.getElementById('marquee'),t=document.getElementById('track');if(!m||!t)return;
+var SPEED=55; /* pixels per second, right to left */
+function item(c){var a=document.createElement('a');a.className='logo';a.href=c.url;a.target='_blank';a.rel='noopener';a.title=c.name;var i=document.createElement('img');i.src=c.img;i.alt=c.name;i.addEventListener('load',fit);a.appendChild(i);return a;}
+function build(){built=false;t.innerHTML='';var set=document.createElement('div');set.style.display='flex';CLIENTS.forEach(function(c){set.appendChild(item(c));});t.appendChild(set);}
+var built=false;
+function fit(){if(built)return;var one=t.firstChild.getBoundingClientRect().width+0;if(!one)return;
+ /* repeat the set until it is at least as wide as the screen, then duplicate once for a seamless loop */
+ var reps=Math.max(1,Math.ceil(m.clientWidth/one)+1);t.innerHTML='';var half=document.createElement('div');half.style.display='flex';
+ for(var r=0;r<reps;r++)CLIENTS.forEach(function(c){var a=item(c);a.querySelector('img').removeEventListener('load',fit);half.appendChild(a);});
+ built=true;t.appendChild(half);var clone=half.cloneNode(true);clone.setAttribute('aria-hidden','true');clone.querySelectorAll('a').forEach(function(a){a.tabIndex=-1;});t.appendChild(clone);
+ var w=half.getBoundingClientRect().width;t.style.setProperty('--dur',(w/SPEED).toFixed(1)+'s');}
+build();var im=t.querySelector('img');if(im.complete)fit();window.addEventListener('resize',function(){clearTimeout(window.__mq);window.__mq=setTimeout(function(){build();var i=t.querySelector('img');if(i.complete)fit();},200);});
+})();
+
+(function(){
+var sleep=function(ms){return new Promise(function(r){setTimeout(r,ms)})},reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,$=function(i){return document.getElementById(i)};
+async function type(el,text,ms){el.textContent='';for(var i=0;i<text.length;i++){el.textContent+=text[i];await sleep(ms)}}
+async function invoice(){var rows=document.querySelectorAll('.viz-inv .inv-row'),pill=$('iv-pill'),total=$('iv-total');if(!pill)return;var fmt=function(n){return '\u20B9 '+n.toLocaleString('en-IN')};
+ if(reduce){rows.forEach(function(r){r.classList.add('show')});total.textContent=fmt(48250);pill.textContent='PAID';pill.classList.add('paid');return}
+ for(;;){rows.forEach(function(r){r.classList.remove('show')});pill.textContent='PENDING';pill.classList.remove('paid');total.textContent=fmt(0);await sleep(500);
+  for(var i=0;i<rows.length;i++){rows[i].classList.add('show');await sleep(450)}
+  var t0=performance.now(),dur=1200;await new Promise(function(res){(function tick(t){var p=Math.min(1,(t-t0)/dur);total.textContent=fmt(Math.round(48250*p));p<1?requestAnimationFrame(tick):res()})(t0)});
+  await sleep(400);pill.textContent='PAID';pill.classList.add('paid');await sleep(2600)}}
+async function chem(){var txt=$('cs-text'),res=$('cs-res');if(!txt)return;
+ var items=[{q:'acetic acid',n:'Acetic acid',cas:'CAS 64-19-7 \u00B7 2.5 L',loc:'SHELF B2'},{q:'67-64-1',n:'Acetone',cas:'CAS 67-64-1 \u00B7 500 mL',loc:'CABINET A1'},{q:'CC(=O)OCC',n:'Ethyl acetate',cas:'CAS 141-78-6 \u00B7 1 L',loc:'FRIDGE 01'}];
+ var show=function(it){$('cs-name').textContent=it.n;$('cs-cas').textContent=it.cas;$('cs-loc').textContent=it.loc;res.classList.add('show')};
+ if(reduce){txt.textContent=items[0].q;show(items[0]);return}
+ for(var i=0;;i=(i+1)%items.length){res.classList.remove('show');txt.textContent='';await sleep(500);await type(txt,items[i].q,85);await sleep(350);show(items[i]);await sleep(2600)}}
+async function web(){var box=$('wb-code'),pill=$('wb-pill');if(!box)return;
+ var L=['<span class="c">&lt;!-- your laboratory website --&gt;</span>','<span class="t">&lt;header&gt;</span> Your Lab <span class="t">&lt;/header&gt;</span>','<span class="t">&lt;nav&gt;</span>Research \u00B7 Team \u00B7 Publications<span class="t">&lt;/nav&gt;</span>','<span class="t">&lt;section</span> <span class="a">id</span>=<span class="s">"tools"</span><span class="t">&gt;</span>','  Inventory \u00B7 Invoices \u00B7 Custom tools','<span class="t">&lt;/section&gt;</span>','<span class="t">&lt;footer&gt;</span> \u00A9 Your Lab <span class="t">&lt;/footer&gt;</span>'];
+ if(reduce){box.innerHTML=L.join('\n');pill.textContent='LIVE';pill.classList.add('ok');return}
+ for(;;){box.innerHTML='';pill.textContent='BUILDING';pill.classList.remove('ok');
+  for(var i=0;i<L.length;i++){var d=document.createElement('div');d.innerHTML=L[i];d.style.opacity=0;d.style.transform='translateX(-10px)';d.style.transition='all .5s';box.appendChild(d);await sleep(30);d.style.opacity=1;d.style.transform='none';await sleep(650)}
+  pill.textContent='LIVE';pill.classList.add('ok');await sleep(3200)}}
+invoice();chem();web();
+/* custom tool options in a circle */
+var ICON={bolt:'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',book:'<path d="M4 4h12a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4z"/><path d="M8 4v16"/>',trash:'<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',cart:'<circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 11h10.8L21 7H6"/>',doc:'<path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6M9 13h8M9 17h8"/>',users:'<circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-4 3-6 7-6s7 2 7 6M17 5a3.5 3.5 0 0 1 0 7"/>',plus:'<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>'};
+var OPT=[['Data Parsers','bolt'],['Instrument Booking','cal'],['Reaction Notebook','book'],['Waste Log','trash'],['Order Tracking','cart'],['Publication Tracker','doc'],['Team Directory','users'],['Your Own Idea','plus']];
+var o=$('orbit');if(o){OPT.forEach(function(x,i){var ang=(i*360/OPT.length-90)*Math.PI/180,r=40;var a=document.createElement('div');a.className='node';a.style.left=(50+r*Math.cos(ang)).toFixed(2)+'%';a.style.top=(50+r*Math.sin(ang)).toFixed(2)+'%';a.innerHTML='<svg viewBox="0 0 24 24">'+ICON[x[1]]+'</svg><span>'+x[0]+'</span>';o.appendChild(a);});}
+})();
 document.getElementById('f').addEventListener('submit',function(e){
 e.preventDefault();
 var d=new FormData(this);
